@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+<%= erb :header %>
+<h1>CREATE_USER</h1>
+
+<form action="/create_user" method="post">
+	名前：<input type="text" name="name">
+	パスワード：<input type="text" name="password">
+	<input type="submit" value="Create">
+</form>
+</body>
+</html>

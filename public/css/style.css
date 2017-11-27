@@ -1,0 +1,98 @@
+html, body, form{
+}
+
+form {
+	text-align: center;
+}
+
+.header {
+	border-bottom-style: solid;
+	margin-bottom: 20px;
+}
+
+input, select{
+	border-radius: 10px;
+	font-size: xx-large;
+	border-color: rgb(227,27,41);
+	border-width: 5px;
+	margin-right: 40px;
+	margin-left: 40px;
+	margin-bottom: 5px;
+}
+
+
+input[type='submit'], select{
+	background-color: white;
+	-webkit-transition-property: background-color;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: liner;
+}
+
+input[type='submit']:hover, select:hover{
+	background-color: rgb(255,104,139);
+	border-color: black;
+	color: white;
+}
+
+.busstop{
+	border-style: solid;
+	margin: 20px;
+	margin-right: 50px;
+	border-color: rgb(277,27,41);
+}
+
+.busstoplist{
+	font-size: 30px;
+}
+
+.delete, .favorite, .des_favorite {
+	margin: 10px;
+	font-size: 20px;
+	border-style: solid;
+	border-width: 2px;
+	border-left-width: 5px;
+	border-bottom-width: 5px;
+	border-color: rgb(204,204,204);
+	cursor: pointer;
+}
+
+.delete:hover, .favorite:hover, .des_favorite:hover {
+	border-width: 2px;
+	border-color: white;
+}
+.delete:hover{
+	background-color:red;
+	color: white;
+}
+.favorite:hover{
+	background-color:yellow;
+}
+.des_favorite:hover {
+	background-color:gray;
+	color: white;
+}
+
+@media screen and (max-device-width: 420px) {
+	body{
+		font-size:50px;
+	}
+	.header{
+		font-size:60px;
+	}
+
+	input, select{
+		font-size: 100px;
+		width: 90%;
+	}
+
+	.busstop{
+		font-size: 50px;
+	}
+	.busstoplist{
+		font-size: 100px;
+	}
+
+	.delete, .favorite, .des_favorite {
+		font-size: 50px;
+	}
+}

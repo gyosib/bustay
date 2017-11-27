@@ -3,10 +3,25 @@
 <head>
 	<meta charset="utf-8">
 </head>
-<h1>INDEX</h1>
+<body>
+<%= erb :header %>
 
 <form action="/search" method="get">
-	<input type="text" name="name">
+	<%= erb :multiinput %>
+	<br>
 	<input type="submit" value="Search">
 </form>
+
+<div class="favorite_win">
+	<h2>お気に入り</h2>
+	<% Array(@busstops).each do |busstop| %>
+		<% if busstop %>
+			<li>
+				<a href="busstop/<%= busstop.id %>"><%= busstop.name %></a>
+			</li>
+		<% end %>
+	<% end %>
+</div>
+
+</body>
 </html>

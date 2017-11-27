@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+<%= erb :header %>
+<h1>LOGIN</h1>
+
+<form action="/login" method="post">
+	<%= csrf_tag %>
+	<input type="text" name="name" placeholder="ユーザ名">
+	<input type="text" name="password" placeholder="パスワード"> <br>
+	<input type="submit" value="Login">
+</form>
+</body>
+</html>

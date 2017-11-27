@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+<%= erb :header %>
+<h1>新しいバス停を作成</h1>
+
+<form action="/create" method="post">
+	<%= csrf_tag %>
+	<%= erb :multiinput %>
+	<input type="submit" value="Create">
+</form>
+</body>
+</html>

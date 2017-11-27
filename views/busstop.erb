@@ -1,1 +1,39 @@
-<h1>DETAIL<%= @name %></h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<%= erb :header %>
+<h1><%= @place %></h1>
+<% if session[:user_id] %>
+	<span id="<%= @name %>" class="delete" data-token="<%= csrf_token%>">削除</span> 
+	<% unless @bookmark %>
+		<span id="<%= @name %>" class="favorite" data-token="<%= csrf_token%>">お気に入り</span>
+	<% else %>
+		<span id="<%= @name %>" class="des_favorite" data-token="<%= csrf_token%>">お気に入り解除</span>
+	<% end %>
+<% end %>
+<ul>
+  <% Array(@tweets).each do |tweet| %>
+    <li class="tweet" data-token="<%= csrf_token %>">
+      <%= h(tweet.goto) %>行き　<%= h(tweet.text) %>　@<%= h(tweet.name) %>　<%= tweet.day.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M:%S") %>
+    </li>
+  <% end %>
+</ul>
+
+<% if session[:user_id] %>
+	<form action="/tweet" method="post">
+		<%= csrf_tag %>
+		<input type="hidden" name="name" value="<%= @name %>">
+		<input type="text" name="goto">行き <br>
+		<input type="text" name="text"> <br>
+		<input type="submit" value="Tweet">
+	</form>
+<% end %>
+<script 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="/js/main.js"></script>
+</body>
+</html>

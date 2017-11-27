@@ -1,0 +1,17 @@
+<div class="header">
+<h1><a href="/">BUSTAY</a></h1>
+<% if session[:user_id] == nil %>
+	<a href="/create_user">ユーザ登録</a>
+	<a href="/login">ログイン</a>
+<% else %>
+	<%= session[:user_name] %>さん
+	<a href="/create">バス停作成</a>
+	<a class="logout" href="#" data-token="<%= csrf_token %>">ログアウト</a>
+<% end %>
+</div>
+<script 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="/js/main.js"></script>
+<link rel="stylesheet" href="/css/style.css" /> 
+

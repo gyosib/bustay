@@ -4,13 +4,12 @@
 	<meta charset="utf-8">
 </head>
 <body>
-<h1>SEARCH</h1>
-
+<%= erb :header %>
 <ul>
 	<% Array(@busstops).each do |busstop| %>
-		<li class="bus_stop">
-			<a href="/busstop/<%= busstop.id %>"><%= busstop.name %></a>
-		</li>
+		<div class="busstop" data-token="<%= csrf_token%>">
+			<a href="/busstop/<%= busstop.id %>"><span class="busstoplist"><%= h(busstop.name) %></span><br><%= h(busstop.pre) %> - <%= h(busstop.muni) %></a>
+		</div>
 	<% end %>
 </ul>
 </body>
