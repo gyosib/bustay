@@ -4,7 +4,7 @@
 	<a href="/create_user">ユーザ登録</a>
 	<a href="/login">ログイン</a>
 <% else %>
-	<%= session[:user_name] %>さん
+	<%= h(session[:user_name]) %>さん
 	<a href="/create">バス停作成</a>
 	<a class="logout" href="#" data-token="<%= csrf_token %>">ログアウト</a>
 <% end %>

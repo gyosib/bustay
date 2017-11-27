@@ -28,7 +28,8 @@ helpers do
 	end
 end
 
-	set :environment, :production
+	#set :environment, :production
+	set :environment, :development
 
 	ActiveRecord::Base.establish_connection(
 		adapter: 'sqlite3',
@@ -88,8 +89,12 @@ end
 	end
 
 	post '/create' do
-		@busstop = Busstop.create(name: params[:name], pre: params[:place1], muni: params[:place2])
-		redirect to("/busstop/"+@busstop.id.to_s)
+		unless params[:name] == "" or params[:place1] == "" or params[:place2] == ""
+			@busstop = Busstop.create(name: params[:name], pre: params[:place1], muni: params[:place2])
+			redirect to("/busstop/"+@busstop.id.to_s)
+		else
+			flash[:hoge] = "都道府県名、市町村名、バス停名を全て入力してください"
+		end
 	end
 
 	post '/create_user' do
@@ -145,4 +150,6 @@ end
 
 	post '/destroy' do
 		Busstop.find(params[:id]).destroy
+		Tweet.where(place: params[:id]).delete_all
+		Bookmark.where(busstop: params[:id]).delete_all
 	end
